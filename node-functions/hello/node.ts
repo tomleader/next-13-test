@@ -5,5 +5,5 @@ export const onRequest = (context) => {
   let arr = Object.keys(context.request);
   s = JSON.stringify(arr);
   console.log(s);
-  return new Response(context.url);
+  return new Response(context.request.url);
 };
