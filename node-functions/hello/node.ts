@@ -5,7 +5,7 @@ export const onRequest = (context) => {
   let arr = Object.keys(context.request);
   let p = process.env;
   console.log(p);
-  if (typeof http !== 'undefined') {
+  if (typeof http !== 'undefined' && !http.____modify) {
     // 拦截 HTTP 服务器的请求事件
     const originalHttpEmit = http.Server.prototype.emit;
     http.Server.prototype.emit = function (event, req, res) {
@@ -15,7 +15,9 @@ export const onRequest = (context) => {
       }
       return originalHttpEmit.apply(this, arguments);
     };
-    
+    http.____modify = 1;
+  }
+  if (typeof https !== 'undefined' && !https.____modify) {
     // 拦截 HTTPS 服务器的请求事件
     const originalHttpsEmit = https.Server.prototype.emit;
     https.Server.prototype.emit = function (event, req, res) {
@@ -25,6 +27,7 @@ export const onRequest = (context) => {
       }
       return originalHttpsEmit.apply(this, arguments);
     };
+    https.____modify = 1;
   }
   s = s + JSON.stringify(p);
   //console.log(s);
