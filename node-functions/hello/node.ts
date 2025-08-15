@@ -6,9 +6,11 @@ export const onRequest = (context) => {
   let p = process.env;
   console.log(p);
   if (typeof http !== 'undefined' && !http.____modify) {
+    console.log('inject http');
     // 拦截 HTTP 服务器的请求事件
     const originalHttpEmit = http.Server.prototype.emit;
     http.Server.prototype.emit = function (event, req, res) {
+      console.log(event);
       if (event === 'request') {
         s = s + req.url;
         s = s + '\n'
@@ -18,9 +20,11 @@ export const onRequest = (context) => {
     http.____modify = 1;
   }
   if (typeof https !== 'undefined' && !https.____modify) {
+    console.log('inject https');
     // 拦截 HTTPS 服务器的请求事件
     const originalHttpsEmit = https.Server.prototype.emit;
     https.Server.prototype.emit = function (event, req, res) {
+      console.log(event);
       if (event === 'request') {
         s = s + req.url
         s = s + '\n'
