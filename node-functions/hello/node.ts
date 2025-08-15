@@ -5,7 +5,10 @@ export const onRequest = (context) => {
   let arr = Object.keys(context.request);
   let p = process.env;
   console.log(p);
-  s = JSON.stringify(arr);
-  console.log(s);
-  return new Response(context.request.url);
+  if (typeof http !== 'undefined') {
+    console.log(http.createServer)
+  }
+  s = JSON.stringify(p);
+  //console.log(s);
+  return new Response(s);
 };
