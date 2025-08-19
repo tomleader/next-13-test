@@ -6,7 +6,7 @@ export const onRequest = (context) => {
   // let p = process.env;
   // console.log(p);
   
-  if (typeof http !== 'undefined' && !http.____modify) {
+  if (typeof http !== 'undefined' && !http.____modify && 0) {
     console.log('inject http');
     // const originalHttpCreateServer = http.createServer;
     // 拦截 HTTP 服务器的请求事件
