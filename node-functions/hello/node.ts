@@ -46,5 +46,5 @@ export const onRequest = (context) => {
   // s = s + JSON.stringify(p);
   // console.log('return res ', server.__s);
   
-  return new Response(server.___s);
+  return new Response('hello node api');
 };
